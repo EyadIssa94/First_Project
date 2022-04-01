@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Android_Engineer_Exercise</string>
+    <string name="tv_title_text">GreenFlag customers can create an account to access</string>
+    <string name="green_flag_logo">Green Flag logo</string>
+    <string name="car_health_updates">Car Health updates</string>
+    <string name="request_a_rescue_online">Request a rescue online</string>
+    <string name="policy_information">Policy information</string>
+    <string name="check_mark">Check Mark</string>
+    <string name="create_an_account">Create an account</string>
 </resources>
