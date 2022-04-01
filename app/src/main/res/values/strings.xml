@@ -7,4 +7,10 @@
     <string name="policy_information">Policy information</string>
     <string name="check_mark">Check Mark</string>
     <string name="create_an_account">Create an account</string>
+    <string name="email">Email</string>
+    <string name="create_password">Create Password</string>
+    <string name="see_criteria_below">See criteria below</string>
+    <string name="repeat_password">Repeat password</string>
+    <string name="Password_hint">Your password should have a minimum of 8 characters and contain at least one number, one uppercase and one lower case letter. You can use special characters.</string>
+    <string name="next">Next</string>
 </resources>
