@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/et_email_input"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
@@ -64,6 +64,7 @@
         android:padding="15dp"
         android:textColor="@color/black"
         android:textColorHint="#ccc"
+        android:fontFamily="@font/museo_sans_300"
         app:layout_constraintStart_toStartOf="@+id/tv_email_title"
         app:layout_constraintTop_toBottomOf="@id/tv_email_title" />
 
@@ -78,10 +79,10 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email_input" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/et_password_input"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
@@ -93,6 +94,7 @@
         android:padding="15dp"
         android:textColor="@color/black"
         android:textColorHint="#ccc"
+        android:fontFamily="@font/museo_sans_300"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -107,10 +109,10 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_input" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/et_passwordValid_input"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="36dp"
@@ -120,6 +122,7 @@
         android:inputType="textPassword"
         android:padding="15dp"
         android:textColor="@color/black"
+        android:fontFamily="@font/museo_sans_300"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -134,10 +137,10 @@
         android:text="@string/Password_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/et_passwordValid_input" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_next"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
@@ -148,7 +151,7 @@
         android:text="@string/next"
         android:textAllCaps="false"
         android:textColor="@color/black"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
