@@ -214,17 +214,6 @@ public class CreateAccount extends AppCompatActivity {
         // check pattern with patterns method
         if (Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             isEmailValid = true;
-//            if (emailList.contains(emailInput)){
-//                emailError.setVisibility(View.VISIBLE);
-//                etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
-//                emailTic.setVisibility(View.GONE);
-//                isEmailValid = false;
-//            } else {
-//                emailError.setVisibility(View.GONE);
-//                etEmail.setBackgroundResource(R.color.white);
-//                emailTic.setVisibility(View.VISIBLE);
-//                isEmailValid = true;
-//            }
         } else {
             isEmailValid = false;
         }
