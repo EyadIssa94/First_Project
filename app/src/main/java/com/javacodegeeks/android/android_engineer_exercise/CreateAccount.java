@@ -20,13 +20,13 @@ public class CreateAccount extends AppCompatActivity {
     private TextView emailError, passwordInvalid, passwordsMatchError;
     private Button nextButton;
     ArrayList<String> emailList = new ArrayList<String>();
-    private boolean is8Char = false,
-            hasNumber = false,
-            hasUpper = false,
-            hasLower = false,
-            isPasswordValid =false,
-            isEmailValid = false,
-            isPasswordMatch = false;
+    private boolean is8Char         = false,
+                    hasNumber       = false,
+                    hasUpper        = false,
+                    hasLower        = false,
+                    isPasswordValid = false,
+                    isEmailValid    = false,
+                    isPasswordMatch = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,18 +66,23 @@ public class CreateAccount extends AppCompatActivity {
         String emailInput = etEmail.getText().toString();
         boolean isInList = false;
 
-        if (emailList.contains(emailInput)) {
-            isInList = true;
-            etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
-            emailTic.setVisibility(View.GONE);
-            emailError.setVisibility(View.VISIBLE);
-            nextButton.setAlpha(.5F);
-            nextButton.setClickable(false);
+        if (!emailInput.isEmpty()){
+            if (emailList.contains(emailInput)) {
+                isInList = true;
+                etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
+                emailTic.setVisibility(View.GONE);
+                emailError.setVisibility(View.VISIBLE);
+                nextButton.setAlpha(.5F);
+                nextButton.setClickable(false);
+            } else {
+                isInList = false;
+                etEmail.setBackgroundResource(R.drawable.green_check_email_border);
+                emailTic.setVisibility(View.VISIBLE);
+                emailError.setVisibility(View.GONE);
+            }
         } else {
-            isInList = false;
-            etEmail.setBackgroundResource(R.drawable.green_check_email_border);
-            emailTic.setVisibility(View.VISIBLE);
-            emailError.setVisibility(View.GONE);
+            etEmail.setBackgroundResource(R.color.white);
+            emailTic.setVisibility(View.GONE);
         }
         return isInList;
     }
@@ -122,6 +127,8 @@ public class CreateAccount extends AppCompatActivity {
                 passwordTic.setVisibility(View.VISIBLE);
                 etPasswordRepeat.setBackgroundResource(R.drawable.green_check_email_border);
                 passwordRepeatTic.setVisibility(View.VISIBLE);
+                passwordInvalid.setVisibility(View.GONE);
+                passwordsMatchError.setVisibility(View.GONE);
             }// one of them not valid
             else if (!validatePassword(etPassword) || !validatePassword(etPasswordRepeat)){
                 etPassword.setBackgroundResource(R.drawable.red_border_whiteback);
