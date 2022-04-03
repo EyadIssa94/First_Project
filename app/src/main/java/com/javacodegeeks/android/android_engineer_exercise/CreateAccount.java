@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -13,6 +14,7 @@ public class CreateAccount extends AppCompatActivity {
 
     private ImageView backButton, emailTic, passwordTic, passwordRepeatTic;
     private EditText etEmail, etPassword, etPasswordRepeat;
+    private Button nextButton;
     private boolean is8Char = false,
             hasNumber = false,
             hasUpper = false,
@@ -34,32 +36,50 @@ public class CreateAccount extends AppCompatActivity {
 
         etEmail.setOnFocusChangeListener((view, b) -> {
             if (!b){
-                if(!etEmail.getText().toString().isEmpty()){
-                    if (validateEmail(etEmail)){
-                        etEmail.setBackgroundResource(R.drawable.green_check_email_border);
-                        emailTic.setVisibility(View.VISIBLE);
-                    } else {
-                        etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
-                        emailTic.setVisibility(View.GONE);
-                    }
-                } else {
-                    etEmail.setBackgroundResource(R.color.white);
-                    emailTic.setVisibility(View.GONE);
-                }
+                emailFormatValidation();
+                nextBtnActivation();
             }
         });
 
         etPassword.setOnFocusChangeListener((view, b) -> {
             if (!b){
                 passwordValidation();
+                nextBtnActivation();
             }
         });
 
         etPasswordRepeat.setOnFocusChangeListener((view, b) -> {
             if (!b){
                 passwordValidation();
+                nextBtnActivation();
             }
         });
+    }
+
+    private void nextBtnActivation(){
+        if (validateEmail(etEmail) && validatePassword(etPasswordRepeat) &&
+                validatePasswordMatch(etPassword, etPasswordRepeat)){
+            nextButton.setAlpha(1);
+            nextButton.setClickable(true);
+        } else {
+            nextButton.setAlpha(.5F);
+            nextButton.setClickable(false);
+        }
+    }
+
+    private void emailFormatValidation() {
+        if(!etEmail.getText().toString().isEmpty()){
+            if (validateEmail(etEmail)){
+                etEmail.setBackgroundResource(R.drawable.green_check_email_border);
+                emailTic.setVisibility(View.VISIBLE);
+            } else {
+                etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
+                emailTic.setVisibility(View.GONE);
+            }
+        } else {
+            etEmail.setBackgroundResource(R.color.white);
+            emailTic.setVisibility(View.GONE);
+        }
     }
 
     private void passwordValidation() {
@@ -97,10 +117,8 @@ public class CreateAccount extends AppCompatActivity {
         String etPasswordRepeatInput = etPasswordRepeat.getText().toString();
 
         if (etPasswordInput.equals(etPasswordRepeatInput)){
-            Toast.makeText(this, "Passwords match", Toast.LENGTH_SHORT).show();
             isPasswordMatch = true;
         } else {
-            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show();
             isPasswordMatch = false;
         }
         return isPasswordMatch;
@@ -138,10 +156,8 @@ public class CreateAccount extends AppCompatActivity {
         }
 
         if (is8Char && hasNumber && hasUpper && hasLower){
-            Toast.makeText(this, "Password is valid", Toast.LENGTH_SHORT).show();
             isPasswordValid = true;
         } else {
-            Toast.makeText(this, "Password is invalid", Toast.LENGTH_SHORT).show();
             isPasswordValid = false;
         }
         return isPasswordValid;
@@ -160,12 +176,13 @@ public class CreateAccount extends AppCompatActivity {
     }
 
     private void initViews() {
-        backButton = findViewById(R.id.iv_back_button);
-        emailTic = findViewById(R.id.iv_validEmail_tic);
-        passwordTic = findViewById(R.id.iv_password_tic);
-        passwordRepeatTic = findViewById(R.id.iv_repeat_tic);
-        etEmail = findViewById(R.id.et_email_input);
-        etPassword = findViewById(R.id.et_password_input);
-        etPasswordRepeat= findViewById(R.id.et_passwordValid_input);
+        backButton          = findViewById(R.id.iv_back_button);
+        emailTic            = findViewById(R.id.iv_validEmail_tic);
+        passwordTic         = findViewById(R.id.iv_password_tic);
+        passwordRepeatTic   = findViewById(R.id.iv_repeat_tic);
+        etEmail             = findViewById(R.id.et_email_input);
+        etPassword          = findViewById(R.id.et_password_input);
+        etPasswordRepeat    = findViewById(R.id.et_passwordValid_input);
+        nextButton          = findViewById(R.id.btn_next);
     }
 }
