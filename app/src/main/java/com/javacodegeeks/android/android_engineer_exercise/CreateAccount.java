@@ -8,12 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class CreateAccount extends AppCompatActivity {
 
     private ImageView backButton, emailTic, passwordTic, passwordRepeatTic;
     private EditText etEmail, etPassword, etPasswordRepeat;
+    private TextView emailError, passwordInvalid, passwordsMatchError;
     private Button nextButton;
     private boolean is8Char = false,
             hasNumber = false,
@@ -96,18 +98,24 @@ public class CreateAccount extends AppCompatActivity {
                 passwordTic.setVisibility(View.GONE);
                 etPasswordRepeat.setBackgroundResource(R.drawable.red_border_whiteback);
                 passwordRepeatTic.setVisibility(View.GONE);
+                passwordInvalid.setVisibility(View.VISIBLE);
+                passwordsMatchError.setVisibility(View.GONE);
             }// both valid but the do not match
             else if (validatePassword(etPassword) && validatePassword(etPasswordRepeat) && !validatePasswordMatch(etPassword, etPasswordRepeat)){
                 etPassword.setBackgroundResource(R.drawable.red_border_whiteback);
                 passwordTic.setVisibility(View.GONE);
                 etPasswordRepeat.setBackgroundResource(R.drawable.red_border_whiteback);
                 passwordRepeatTic.setVisibility(View.GONE);
+                passwordInvalid.setVisibility(View.GONE);
+                passwordsMatchError.setVisibility(View.VISIBLE);
             }
         }else {
             etPassword.setBackgroundResource(R.color.white);
             passwordTic.setVisibility(View.GONE);
             etPasswordRepeat.setBackgroundResource(R.color.white);
             passwordRepeatTic.setVisibility(View.GONE);
+            passwordInvalid.setVisibility(View.GONE);
+            passwordsMatchError.setVisibility(View.GONE);
         }
 
     }
@@ -184,5 +192,8 @@ public class CreateAccount extends AppCompatActivity {
         etPassword          = findViewById(R.id.et_password_input);
         etPasswordRepeat    = findViewById(R.id.et_passwordValid_input);
         nextButton          = findViewById(R.id.btn_next);
+        emailError          = findViewById(R.id.tv_email_error);
+        passwordInvalid     = findViewById(R.id.tv_password_not_valid);
+        passwordsMatchError = findViewById(R.id.tv_password_no_match);
     }
 }
