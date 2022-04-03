@@ -11,12 +11,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class CreateAccount extends AppCompatActivity {
 
     private ImageView backButton, emailTic, passwordTic, passwordRepeatTic;
     private EditText etEmail, etPassword, etPasswordRepeat;
     private TextView emailError, passwordInvalid, passwordsMatchError;
     private Button nextButton;
+    ArrayList<String> emailList = new ArrayList<String>();
     private boolean is8Char = false,
             hasNumber = false,
             hasUpper = false,
@@ -39,6 +42,7 @@ public class CreateAccount extends AppCompatActivity {
         etEmail.setOnFocusChangeListener((view, b) -> {
             if (!b){
                 emailFormatValidation();
+                emailListCheck(etEmail);
                 nextBtnActivation();
             }
         });
@@ -58,11 +62,37 @@ public class CreateAccount extends AppCompatActivity {
         });
     }
 
+    private boolean emailListCheck(EditText etEmail) {
+        String emailInput = etEmail.getText().toString();
+        boolean isInList = false;
+
+        if (emailList.contains(emailInput)) {
+            isInList = true;
+            etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
+            emailTic.setVisibility(View.GONE);
+            emailError.setVisibility(View.VISIBLE);
+            nextButton.setAlpha(.5F);
+            nextButton.setClickable(false);
+        } else {
+            isInList = false;
+            etEmail.setBackgroundResource(R.drawable.green_check_email_border);
+            emailTic.setVisibility(View.VISIBLE);
+            emailError.setVisibility(View.GONE);
+        }
+        return isInList;
+    }
+
     private void nextBtnActivation(){
-        if (validateEmail(etEmail) && validatePassword(etPasswordRepeat) &&
+        if (validateEmail(etEmail) && !emailListCheck(etEmail) && validatePassword(etPasswordRepeat) &&
                 validatePasswordMatch(etPassword, etPasswordRepeat)){
             nextButton.setAlpha(1);
             nextButton.setClickable(true);
+
+            nextButton.setOnClickListener(view -> {
+                String emailInput = etEmail.getText().toString();
+                emailList.add(emailInput);
+                Toast.makeText(this, "Email was added to the list!", Toast.LENGTH_SHORT).show();
+            });
         } else {
             nextButton.setAlpha(.5F);
             nextButton.setClickable(false);
@@ -177,6 +207,17 @@ public class CreateAccount extends AppCompatActivity {
         // check pattern with patterns method
         if (Patterns.EMAIL_ADDRESS.matcher(emailInput).matches()) {
             isEmailValid = true;
+//            if (emailList.contains(emailInput)){
+//                emailError.setVisibility(View.VISIBLE);
+//                etEmail.setBackgroundResource(R.drawable.red_border_whiteback);
+//                emailTic.setVisibility(View.GONE);
+//                isEmailValid = false;
+//            } else {
+//                emailError.setVisibility(View.GONE);
+//                etEmail.setBackgroundResource(R.color.white);
+//                emailTic.setVisibility(View.VISIBLE);
+//                isEmailValid = true;
+//            }
         } else {
             isEmailValid = false;
         }
