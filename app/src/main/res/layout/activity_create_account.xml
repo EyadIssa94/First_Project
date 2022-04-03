@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="68dp"
         android:fontFamily="@font/museo_sans_500"
         android:text="@string/create_an_account"
@@ -34,7 +34,7 @@
         android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:background="#ccc"
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/museo_sans_300"
         android:text="Email address"
         android:textColor="@color/white"
@@ -54,17 +54,17 @@
     <EditText
         android:id="@+id/et_email_input"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="36dp"
         android:background="@color/white"
+        android:fontFamily="@font/museo_sans_300"
         android:hint="firstnamelastname@gmail.com"
         android:inputType="textEmailAddress"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#ccc"
-        android:fontFamily="@font/museo_sans_300"
         app:layout_constraintStart_toStartOf="@+id/tv_email_title"
         app:layout_constraintTop_toBottomOf="@id/tv_email_title" />
 
@@ -73,7 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/museo_sans_300"
         android:text="@string/create_password"
         android:textColor="@color/white"
@@ -84,17 +84,17 @@
     <EditText
         android:id="@+id/et_password_input"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="36dp"
         android:background="@color/white"
+        android:fontFamily="@font/museo_sans_300"
         android:hint="@string/see_criteria_below"
         android:inputType="textPassword"
-        android:padding="15dp"
+        android:padding="10dp"
         android:textColor="@color/black"
         android:textColorHint="#ccc"
-        android:fontFamily="@font/museo_sans_300"
         app:layout_constraintStart_toStartOf="@+id/textView5"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -103,26 +103,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/museo_sans_300"
         android:text="@string/repeat_password"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_password_input" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password_input"
+        tools:layout_editor_absoluteY="269dp" />
 
     <EditText
         android:id="@+id/et_passwordValid_input"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="40dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="36dp"
         android:background="@color/white"
-        android:inputType="textPassword"
-        android:padding="15dp"
-        android:textColor="@color/black"
         android:fontFamily="@font/museo_sans_300"
+        android:inputType="textPassword"
+        android:padding="10dp"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/textView6"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
@@ -131,13 +132,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="25dp"
         android:layout_marginEnd="36dp"
+        android:layout_marginBottom="25dp"
         android:fontFamily="@font/museo_sans_500"
         android:text="@string/Password_hint"
+        app:layout_constraintBottom_toTopOf="@+id/btn_next"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_passwordValid_input" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btn_next"
@@ -156,4 +157,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_validEmail_tic"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintBottom_toBottomOf="@id/et_email_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/et_email_input"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@drawable/tick"
+        android:visibility="gone"/>
+    <ImageView
+        android:id="@+id/iv_password_tic"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintBottom_toBottomOf="@id/et_password_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/et_password_input"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@drawable/tick"
+        android:visibility="gone"/>
+
+    <ImageView
+        android:id="@+id/iv_repeat_tic"
+        android:layout_width="24dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="42dp"
+        app:layout_constraintBottom_toBottomOf="@+id/et_passwordValid_input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/et_passwordValid_input"
+        app:layout_constraintVertical_bias="0.533"
+        app:srcCompat="@drawable/tick"
+        android:visibility="gone"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
